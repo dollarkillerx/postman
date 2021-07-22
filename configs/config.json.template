@@ -1,0 +1,7 @@
+{
+  "RocketChatToken": "RocketChatToken",
+  "RocketChatUserID": "RocketChatUserID",
+  "WorkWechatCorpID": "WorkWechatCorpID",
+  "WorkWechatCorpSecret": "WorkWechatCorpSecret",
+  "PostmanToken": "PostmanToken"
+}

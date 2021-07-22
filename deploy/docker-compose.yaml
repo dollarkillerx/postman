@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  galaxy:
+    container_name: "postman"
+    image: dollarkiller/postman:latest
+    restart: always
+    environment:
+      RocketChatAddr: ""
+      RocketChatToken: ""
+      RocketChatUserID: ""
+      WorkWechatAgentID: ""
+      WorkWechatCorpID: ""
+      WorkWechatCorpSecret: ""
+      PostmanAddr: ""
+      PostmanToken: ""
+    ports:
+      - "8689:8689"
