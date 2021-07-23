@@ -2,6 +2,7 @@ package server
 
 import (
 	"github.com/dollarkillerx/erguotou"
+	"github.com/dollarkillerx/postman/internal/conf"
 
 	"log"
 	"sync"
@@ -25,8 +26,10 @@ func (s *server) Run(addr string) error {
 	s.app.Use(erguotou.Logger)
 	s.router()
 
-	go s.updateWechatToken()
-	time.Sleep(time.Millisecond * 300)
+	if conf.Conf.WorkWechatCorpSecret != "" {
+		go s.updateWechatToken()
+		time.Sleep(time.Millisecond * 300)
+	}
 
 	log.Println("Postman Run: ", addr)
 	if err := s.app.Run(erguotou.SetHost(addr)); err != nil {

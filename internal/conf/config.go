@@ -4,9 +4,8 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"log"
+	"os"
 	"strconv"
-
-	"github.com/dollarkillerx/env"
 )
 
 type conf struct {
@@ -14,7 +13,7 @@ type conf struct {
 	RocketChatToken  string `json:"RocketChatToken"`
 	RocketChatUserID string `json:"RocketChatUserID"`
 
-	WorkWechatAgentIDInt int
+	WorkWechatAgentIDInt int    `json:"-" env:"-"`
 	WorkWechatAgentID    string `json:"WorkWechatAgentID"`
 	WorkWechatCorpID     string `json:"WorkWechatCorpID"`
 	WorkWechatCorpSecret string `json:"WorkWechatCorpSecret"`
@@ -31,10 +30,19 @@ func init() {
 	file, err := ioutil.ReadFile("./configs/config.json")
 	if err != nil {
 		// get env
-		err := env.Fill(&cnf)
-		if err != nil {
-			log.Fatalln("Config Parse Error")
-		}
+		//err := env.Fill(&cnf)
+		//if err != nil {
+		//	log.Fatalln("Config Parse Error : ", err.Error())
+		//}
+
+		cnf.RocketChatAddr = os.Getenv("RocketChatAddr")
+		cnf.RocketChatToken = os.Getenv("RocketChatToken")
+		cnf.RocketChatUserID = os.Getenv("RocketChatUserID")
+		cnf.WorkWechatAgentID = os.Getenv("WorkWechatAgentID")
+		cnf.WorkWechatCorpID = os.Getenv("WorkWechatCorpID")
+		cnf.WorkWechatCorpSecret = os.Getenv("WorkWechatCorpSecret")
+		cnf.PostmanAddr = os.Getenv("PostmanAddr")
+		cnf.PostmanToken = os.Getenv("PostmanToken")
 
 		Conf = &cnf
 		return

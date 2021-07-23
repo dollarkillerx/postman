@@ -44,3 +44,8 @@ HEADER:
 ``` 
 PostmanToken: PostmanToken
 ```
+
+## 部署
+修改 `deploy/docker-compose.yaml` 中的配置
+
+然后 `docker-compose up -d`

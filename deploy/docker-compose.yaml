@@ -6,13 +6,13 @@ services:
     image: dollarkiller/postman:latest
     restart: always
     environment:
-      RocketChatAddr: ""
+      RocketChatAddr: "" # http://xxx/api/v1/chat.postMessage
       RocketChatToken: ""
       RocketChatUserID: ""
       WorkWechatAgentID: ""
       WorkWechatCorpID: ""
       WorkWechatCorpSecret: ""
-      PostmanAddr: ""
-      PostmanToken: ""
+      PostmanAddr: "0.0.0.0:8675"
+      PostmanToken: "PostmanToken"
     ports:
-      - "8689:8689"
+      - "8675:8675"
